@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
 
-            android:hint="Name"
+            android:hint="이름"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:singleLine="true"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="#ffffff"
-            android:hint="Phone"
+            android:hint="전화번호"
             android:inputType="phone"
             android:padding="10dp"
             android:singleLine="true"

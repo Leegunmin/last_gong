@@ -28,7 +28,7 @@
         android:layout_height="35dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/buttonbackground_close"
-        android:text="write"
+        android:text="글 쓰기"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="15dp"

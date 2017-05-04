@@ -86,7 +86,7 @@
         app:font = "custom2"
         android:layout_height="35dp"
         android:background="@drawable/buttonbackground_close"
-        android:text="Setting"
+        android:text="설정"
         android:textStyle ="bold"
         android:layout_alignTop="@+id/linearLayout"
         android:layout_toStartOf="@+id/linearLayout" />
