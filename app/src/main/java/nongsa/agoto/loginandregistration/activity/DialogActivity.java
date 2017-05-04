@@ -90,8 +90,8 @@ public class DialogActivity extends Activity {
 
         String star = intent.getStringExtra("star");
         System.out.println(star + "asdasdasdasdasdasd");
-        if(star == null || star == "null" || star == "NULL" || star == ""){
-            star = "0.000";
+        if(star.equals("null")){
+            star = "0";
         }
 
         final String phone = intent.getStringExtra("phone");
@@ -136,7 +136,10 @@ public class DialogActivity extends Activity {
         intro_dial.setText("소개 : " + intro);
 
 
-        float rating = Float.valueOf(star)/2;
+        float rating = Float.valueOf(star);
+        if(rating != 0){
+            rating = Float.valueOf(star)/2;
+        }
         rating_text_dial.setText(String.valueOf(rating).substring(0,3) + "/5");
         rating_dial.setRating(rating);
 
