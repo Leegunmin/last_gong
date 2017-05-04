@@ -14,4 +14,8 @@ public class AppConfig {
 	public static String URL_UPDATE = "http://52.79.61.227/login/update.php";
 
 	public static String URL_RELOAD = "http://52.79.61.227/login/reload.php";
+
+	public static String URL_REVIEW_READ = "http://52.79.61.227/review/read.php";
+
+	public static String URL_REVIEW_WRITE = "http://52.79.61.227/review/write.php";
 }
