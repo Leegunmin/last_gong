@@ -23,66 +23,66 @@
 
         <TextView
             android:id="@+id/name_dial"
-            app:font = "custom2"
-            android:layout_width="130dp"
-            android:layout_height="30dp"
+            android:layout_width="135dp"
+            android:layout_height="28dp"
             android:layout_alignTop="@+id/image_dial"
             android:layout_marginLeft="10dp"
-            android:paddingLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/image_dial"
             android:background="#ffffff"
             android:gravity="center_vertical"
+            android:paddingLeft="5dp"
 
 
-            android:layout_toEndOf="@+id/image_dial"
             android:text="Name"
-            android:textColor = "#000000"/>
+            android:textColor="#000000"
+            app:font="custom2" />
 
         <TextView
             android:id="@+id/exp_dial"
-            android:paddingLeft="5dp"
-            android:layout_width="130dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/dialog_background"
-            app:font = "custom2"
-            android:layout_height="30dp"
+            android:layout_width="135dp"
+            android:layout_height="28dp"
             android:layout_below="@+id/name_dial"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-
-            android:textColor = "#000000"
+            android:layout_marginTop="3dp"
             android:layout_toEndOf="@+id/image_dial"
-            android:text="Exp" />
+            android:background="@drawable/dialog_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+
+            android:text="Exp"
+            android:textColor="#000000"
+            app:font="custom2" />
 
         <TextView
             android:id="@+id/grow_dial"
-            android:paddingLeft="5dp"
-            android:layout_width="130dp"
-            app:font = "custom2"
-            android:gravity="center_vertical"
-            android:background="@drawable/dialog_background"
-            android:layout_height="30dp"
+            android:layout_width="135dp"
+            android:layout_height="28dp"
             android:layout_below="@+id/exp_dial"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor = "#000000"
+            android:layout_marginTop="3dp"
             android:layout_toEndOf="@+id/image_dial"
-            android:text="Grow" />
+            android:background="@drawable/dialog_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:text="Grow"
+            android:textColor="#000000"
+            app:font="custom2" />
 
         <TextView
             android:id="@+id/nation_dial"
-            android:layout_width="130dp"
+            android:layout_width="135dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/grow_dial"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/image_dial"
             android:background="@drawable/dialog_background"
             android:gravity="center_vertical"
-            android:layout_height="30dp"
-            android:layout_below="@+id/grow_dial"
             android:paddingLeft="5dp"
-            app:font = "custom2"
-            android:layout_marginLeft="10dp"
-            android:textColor = "#000000"
-            android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/image_dial"
-            android:text="Nation" />
+            android:text="Nation"
+            android:textColor="#000000"
+            app:font="custom2" />
 
         <Button
             android:layout_marginTop="10dp"
@@ -107,27 +107,56 @@
             android:text="전화"
             android:layout_below="@+id/intro_dial"
             android:layout_alignStart="@+id/intro_dial" />
+
         <Button
-            android:id="@+id/eval"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/buttonbackground_close"
+            android:id="@+id/eval_dial"
             android:layout_width="130dp"
             android:layout_height="30dp"
-            app:font = "custom2"
-            android:text="평가"
+            android:layout_alignEnd="@+id/intro_dial"
             android:layout_below="@+id/intro_dial"
-            android:layout_alignEnd="@+id/intro_dial" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buttonbackground_close"
+            android:text="평가"
+            app:font="custom2" />
 
         <TextView
             android:id="@+id/intro_dial"
-            android:background="@drawable/dialog_background"
             android:layout_width="280dp"
             android:layout_height="150dp"
-            android:padding="10dp"
-            app:font = "custom2"
-            android:text="Introduce"
+            android:layout_alignStart="@+id/image_dial"
             android:layout_below="@+id/image_dial"
-            android:layout_alignStart="@+id/image_dial" />
+            android:layout_marginTop="2dp"
+            android:background="@drawable/dialog_background"
+            android:padding="10dp"
+            android:text="Introduce"
+            app:font="custom2" />
+
+        <RatingBar
+            android:id="@+id/rating_dial"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_below="@+id/nation_dial"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/image_dial"
+            android:background="@drawable/dialog_background"
+            android:gravity="center_vertical"
+            android:numStars="5"
+            android:rating="5"
+            android:stepSize="0.5" />
+
+        <TextView
+            android:id="@+id/rating_text_dial"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignBottom="@+id/rating_dial"
+            android:layout_toEndOf="@+id/rating_dial"
+            android:background="@drawable/dialog_background"
+            android:gravity="center_vertical"
+            android:text="0/5"
+            android:textColor="#000000"
+            app:font="custom2" />
 
 
 </RelativeLayout>

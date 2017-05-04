@@ -4,7 +4,7 @@
     tools:ignore="missingPrefix"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}"
+    tools:context=".loginandregistration.activity.Board"
     android:background="@drawable/background">
 
     <LinearLayout
@@ -85,7 +85,7 @@
         app:font = "custom2"
         android:layout_height="35dp"
         android:background="@drawable/buttonbackground_close"
-        android:text="Setting"
+        android:text="설정"
         android:textStyle ="bold"
         android:layout_alignTop="@+id/linearLayout"
         android:layout_toStartOf="@+id/linearLayout" />

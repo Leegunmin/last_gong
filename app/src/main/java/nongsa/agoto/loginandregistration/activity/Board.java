@@ -202,6 +202,7 @@ public class Board extends Activity {
 
             Intent intent = new Intent(Board.this , DialogActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("email", datas.get(pos).getEmail().toString());
             intent.putExtra("name",datas.get(pos).getName().toString());
             intent.putExtra("exp",datas.get(pos).getExp());
             intent.putExtra("grow",datas.get(pos).getGrow().toString());
@@ -209,6 +210,7 @@ public class Board extends Activity {
             intent.putExtra("imgld",datas.get(pos).getImgId().toString());
             intent.putExtra("intro", datas.get(pos).getIntro().toString());
             intent.putExtra("phone", datas.get(pos).getPhone().toString());
+            intent.putExtra("star", datas.get(pos).getStar().toString());
             startActivity(intent);
 
         }
@@ -348,8 +350,9 @@ public class Board extends Activity {
                             Uri myUri = Uri.parse("http://52.79.61.227/file/uploads/" + email + ".jpg");
                             String intro = jArr.getJSONObject(i).getString("intro");
                             String phone = jArr.getJSONObject(i).getString("phone");
+                            String star = jArr.getJSONObject(i).getString("star");
 
-                            datas.add( new MemberData(name, nation, myUri, exp, grow, intro, phone));
+                            datas.add( new MemberData(email, name, nation, myUri, exp, grow, intro, phone, star));
 
 
                         } else {

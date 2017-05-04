@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Rating;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,8 @@ import java.net.URL;
 
 import nongsa.agoto.R;
 
+import static java.sql.Types.NULL;
+
 
 public class DialogActivity extends Activity {
     Handler handler = new Handler();
@@ -46,6 +50,10 @@ public class DialogActivity extends Activity {
     Button phone_dial;
     Button close_dial;
     String finalPhone;
+    Button eval_dial;
+
+    TextView rating_text_dial;
+    RatingBar rating_dial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +75,24 @@ public class DialogActivity extends Activity {
 
         phone_dial = (Button) findViewById(R.id.phone_dial);
         close_dial = (Button) findViewById(R.id.close_dial);
+        eval_dial = (Button)findViewById(R.id.eval_dial);
+
+        rating_text_dial = (TextView)findViewById(R.id.rating_text_dial);
+        rating_dial = (RatingBar)findViewById(R.id.rating_dial);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+        final String email = intent.getStringExtra("email");
+        final String name = intent.getStringExtra("name");
         int exp = intent.getIntExtra("exp", 0);
         String grow = intent.getStringExtra("grow");
         String nation = intent.getStringExtra("nation");
         String intro = intent.getStringExtra("intro");
+
+        String star = intent.getStringExtra("star");
+        System.out.println(star + "asdasdasdasdasdasd");
+        if(star.equals("null")){
+            star = "0";
+        }
 
         final String phone = intent.getStringExtra("phone");
         finalPhone = phone;
@@ -115,6 +134,14 @@ public class DialogActivity extends Activity {
         grow_dial.setText("재배 작물 : " + grow);
         nation_dial.setText("지역 : " + nation);
         intro_dial.setText("소개 : " + intro);
+
+
+        float rating = Float.valueOf(star);
+        if(rating != 0){
+            rating = Float.valueOf(star)/2;
+        }
+        rating_text_dial.setText(String.valueOf(rating).substring(0,3) + "/5");
+        rating_dial.setRating(rating);
 
         close_dial.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +210,17 @@ public class DialogActivity extends Activity {
                 }
             }
 
+        });
+
+        eval_dial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent.putExtra("email", email);
+                intent.putExtra("name", name);
+                startActivity(intent);
+                finish();
+            }
         });
     }
     @Override

@@ -13,7 +13,6 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#fff1b9"
-    tools:context="com.example.leegunmin.agoto.MaintoOther.diary.diary"
     android:weightSum="1">
     <TextView
         android:textSize="35dp"
