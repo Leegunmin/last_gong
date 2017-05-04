@@ -133,7 +133,7 @@ public class RegisterActivity extends Activity {
                     if (!error) {
                         // User successfully stored in MySQL
                         // Now store the user in sqlite
-                        String uid = jObj.getString("uid");
+                        /*String uid = jObj.getString("uid");
 
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
@@ -149,18 +149,18 @@ public class RegisterActivity extends Activity {
                         String subNationA = user.getString("subNationA");
                         String subNationB = user.getString("subNationB");
 
-                        System.out.println(name);
-                        System.out.println(email);
-                        System.out.println(phone);
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, exp, nation, grow, phone, auth, intro,subNationA ,subNationB);
+                        db.addUser(name, email, uid, exp, nation, grow, phone, auth, intro,subNationA ,subNationB);*/
+
+                        System.out.println("종료????");
+                        finish();
+
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
-                        // Launch login activity
 
-                        finish();
+
                     } else {
 
                         // Error occurred in registration. Get the error
