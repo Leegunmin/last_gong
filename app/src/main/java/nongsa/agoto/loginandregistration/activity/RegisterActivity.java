@@ -86,6 +86,7 @@ public class RegisterActivity extends Activity {
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !phone.isEmpty()) {
                     registerUser(name, email, password, phone);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
@@ -160,7 +161,6 @@ public class RegisterActivity extends Activity {
 
                         // Launch login activity
 
-                        finish();
                     } else {
 
                         // Error occurred in registration. Get the error

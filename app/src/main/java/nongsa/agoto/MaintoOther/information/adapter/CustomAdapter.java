@@ -69,9 +69,11 @@ public class CustomAdapter extends BaseAdapter {
 
             // TextView에 현재 position의 문자열 추가
             ImageView video_img = (ImageView)convertView.findViewById(R.id.video_img);
-            Glide.with(parent.getContext()).load(m_IMG.get(position)).into(video_img);
-            TextView text = (TextView) convertView.findViewById(R.id.text);
-            text.setText(m_List.get(position));
+            if(position<m_IMG.size() ) {
+                Glide.with(parent.getContext()).load(m_IMG.get(position)).into(video_img);
+                TextView text = (TextView) convertView.findViewById(R.id.text);
+                text.setText(m_List.get(position));
+            }
 
             // 버튼을 터치 했을 때 이벤트 발생
 

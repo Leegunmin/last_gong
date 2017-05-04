@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import nongsa.agoto.R;
+import nongsa.agoto.loginandregistration.activity.setting.Search;
 import nongsa.agoto.loginandregistration.app.AppConfig;
 import nongsa.agoto.loginandregistration.app.AppController;
 import nongsa.agoto.loginandregistration.helper.SQLiteHandler;
@@ -61,7 +62,9 @@ public class Board extends Activity {
 
     private Button setting;
     private Button reg_board;
-
+    private Button search;
+    String a ;
+    String b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +72,10 @@ public class Board extends Activity {
         setContentView(R.layout.activity_board);
 
         board = Board.this;
-
+        search = (Button)findViewById(R.id.search);
         btnLogout = (Button) findViewById(R.id.btnLogout);
-
+         a = getIntent().getStringExtra("a");
+         b = getIntent().getStringExtra("b");
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -104,7 +108,14 @@ public class Board extends Activity {
                 logoutUser();
             }
         });
-
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Search.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         setting=(Button)findViewById(R.id.setting);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +125,7 @@ public class Board extends Activity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 //intent.putExtra("imgld",db.getUserDetails().get("email"));
                 startActivity(intent);
+
             }
         });
         reg_board=(Button)findViewById(R.id.reg_board);
@@ -138,7 +150,6 @@ public class Board extends Activity {
         //이번 예제에서는 우선 직접 코딩으로 멤버정보를 입력하고
         //다른 예제에서 추가/삭제 관련 작업을 해보겠습니다.
         //비정상 회담(요즘 유명하기에 허락없이 도용합니다.-_-)멤버 정보 생성
-        getContent();
 		/*datas.add( new MemberData("유세윤", "대한민국", R.drawable.korea, 10, "apple"));
 		datas.add( new MemberData("블레어", "호주", R.drawable.australia, 10, "apple"));
 		datas.add( new MemberData("기욤 패트리", "캐나다", R.drawable.canada, 10, "apple"));
@@ -151,6 +162,13 @@ public class Board extends Activity {
 
         //ListView 객체 찾아와서 참조
         listview= (ListView)findViewById(R.id.listview);
+        if(a == null) {
+            System.out.println("get response : ");
+            getContent();
+        }
+        else{
+            getContentTwo();
+        }
 
 
     }
@@ -203,13 +221,108 @@ public class Board extends Activity {
         pDialog.setMessage("Getting Content ...");
         showDialog();
 
+            StringRequest strReq = new StringRequest(Request.Method.POST,
+                    AppConfig.URL_READ, new Response.Listener<String>() {
+
+                @Override
+                public void onResponse(String response) {
+                    Log.d(TAG, "Get Response: " + response.toString());
+                    hideDialog();
+
+                    try {
+                        JSONObject jObj = new JSONObject(response);
+                        JSONArray jArr = jObj.getJSONArray("result");
+
+
+                        System.out.println(jArr);
+                        System.out.println(jObj);
+
+                        for (int i = 0; i < jArr.length(); i++) {
+                            boolean error = jArr.getJSONObject(i).getBoolean("error");
+
+                            // Check for error node in json
+                            if (!error) {
+
+                                // Now store the user in SQLite
+                                int id = jArr.getJSONObject(i).getInt("id");
+                                String name = jArr.getJSONObject(i).getString("name");
+                                String email = jArr.getJSONObject(i).getString("email");
+                                String nation = jArr.getJSONObject(i).getString("nation");
+                                String grow = jArr.getJSONObject(i).getString("grow");
+                                int exp = jArr.getJSONObject(i).getInt("exp");
+                                Uri myUri = Uri.parse("http://52.79.61.227/file/uploads/" + email + ".jpg");
+                                String intro = jArr.getJSONObject(i).getString("intro");
+                                String phone = jArr.getJSONObject(i).getString("phone");
+
+                                datas.add(new MemberData(name, nation, myUri, exp, grow, intro, phone));
+
+
+                            } else {
+                                // Error in login. Get the error message
+                                String errorMsg = jObj.getString("error_msg");
+                                Toast.makeText(getApplicationContext(),
+                                        errorMsg, Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        //AdapterView의 일종인 ListView에 적용할 Adapter 객체 생성
+                        //MemberData 객체의 정보들(이름, 국적, 이미지)를 적절하게 보여줄 뷰로 만들어주는 Adapter클래스 객체생성
+                        //이 예제에서는 MemberDataAdapter.java 파일로 클래스를 설계하였음.
+                        //첫번재 파라미터로 xml 레이아웃 파일을 객체로 만들어 주는 LayoutInflater 객체 얻어와서 전달..
+                        //두번째 파라미터는 우리가 나열한 Data 배열..
+                        MemberDataAdapter adapter = new MemberDataAdapter(getLayoutInflater(), datas);
+                        //위에 만든 Adapter 객체를 AdapterView의 일종인 ListView에 설정.
+                        adapter.notifyDataSetChanged();
+                        listview.setAdapter(adapter);
+                        listview.setOnItemClickListener(itemClickListenerOfLanguageList);
+
+                    } catch (JSONException e) {
+                        // JSON error
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e(TAG, "Board Error: " + error.getMessage());
+                    Toast.makeText(getApplicationContext(),
+                            error.getMessage(), Toast.LENGTH_LONG).show();
+                    hideDialog();
+                }
+            }) {
+
+            /*@Overridedaf
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", email);
+                params.put("password", password);
+
+                return params;
+            }*/
+
+            };
+
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+
+
+    }
+    private void getContentTwo() {
+        final String TAG = "search : ";
+        // Tag used to cancel the request
+        String tag_string_req = "req_get_content";
+
+
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                AppConfig.URL_READ, new Response.Listener<String>() {
+                AppConfig.URL_READTWO, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Get Response: " + response.toString());
-                hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -247,16 +360,23 @@ public class Board extends Activity {
                         }
                     }
 
+                    MemberDataAdapter adapter = new MemberDataAdapter(getLayoutInflater(), datas);
+                    //위에 만든 Adapter 객체를 AdapterView의 일종인 ListView에 설정.
+                    adapter.notifyDataSetChanged();
+                    listview.setAdapter(adapter);
+                    listview.setOnItemClickListener(itemClickListenerOfLanguageList);
+
+
                     //AdapterView의 일종인 ListView에 적용할 Adapter 객체 생성
                     //MemberData 객체의 정보들(이름, 국적, 이미지)를 적절하게 보여줄 뷰로 만들어주는 Adapter클래스 객체생성
                     //이 예제에서는 MemberDataAdapter.java 파일로 클래스를 설계하였음.
                     //첫번재 파라미터로 xml 레이아웃 파일을 객체로 만들어 주는 LayoutInflater 객체 얻어와서 전달..
                     //두번째 파라미터는 우리가 나열한 Data 배열..
-                    MemberDataAdapter adapter= new MemberDataAdapter( getLayoutInflater() , datas);
+                    //  MemberDataAdapter adapter= new MemberDataAdapter( getLayoutInflater() , datas);
                     //위에 만든 Adapter 객체를 AdapterView의 일종인 ListView에 설정.
-                    adapter.notifyDataSetChanged();
-                    listview.setAdapter(adapter);
-                    listview.setOnItemClickListener(itemClickListenerOfLanguageList);
+                    //  adapter.notifyDataSetChanged();
+                    //  listview.setAdapter(adapter);
+                    //   listview.setOnItemClickListener(itemClickListenerOfLanguageList);
 
                 } catch (JSONException e) {
                     // JSON error
@@ -272,19 +392,18 @@ public class Board extends Activity {
                 Log.e(TAG, "Board Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
-                hideDialog();
             }
         }) {
 
-            /*@Override
+            @Override
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email);
-                params.put("password", password);
+                params.put("nation", a);
+                params.put("grow", b);
 
                 return params;
-            }*/
+            }
 
         };
 
@@ -347,6 +466,7 @@ public class Board extends Activity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
+
 
 }
 

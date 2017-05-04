@@ -52,7 +52,7 @@ public class SettingActivity extends Activity {
     private EditText intro_setting;
     private Button revise_setting;
     private Button upload_setting;
-
+    String emailTemp;
     private SQLiteHandler db;
     private SessionManager session;
 
@@ -101,6 +101,7 @@ public class SettingActivity extends Activity {
         exp_setting.setText(db.getUserDetails().get("exp"));
         grow_setting.setText(db.getUserDetails().get("grow"));
         intro_setting.setText(db.getUserDetails().get("intro"));
+        System.out.println("guntwo51: "+ db.getUserDetails().get("intro"));
         // Logout button click event
         btnLogout.setOnClickListener(new View.OnClickListener() {
 
@@ -120,15 +121,10 @@ public class SettingActivity extends Activity {
         revise_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailTemp = db.getUserDetails().get("email").toString().trim();
+                emailTemp = db.getUserDetails().get("email").toString().trim();
                 updateInfo(emailTemp, name_setting.getText().toString().trim(), phone_setting.getText().toString().trim(), exp_setting.getText().toString().trim(), grow_setting.getText().toString().trim(), intro_setting.getText().toString().trim(),
                         nation_setting.getText().toString().trim(), subNation_setting.getText().toString().trim());
-                logoutUserB();
-                reLogin(emailTemp);
-                Board.board.finish();//모름모름
-                Intent intent = new Intent(getApplicationContext(), Board.class);
-                startActivity(intent);
-                finish();
+
 
             }
         });
@@ -180,7 +176,7 @@ public class SettingActivity extends Activity {
 
                         int auth = user.getInt("auth");
                         String intro = user.getString("intro");
-
+                        System.out.println("guntwo52: "+ intro);
                         String subNationA = user.getString("subNationA");
                         String subNationB = user.getString("subNationB");
 
@@ -202,6 +198,11 @@ public class SettingActivity extends Activity {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
+
+                Board.board.finish();//모름모름
+                Intent intent = new Intent(getApplicationContext(), Board.class);
+                startActivity(intent);
+                finish();
 
             }
         }, new Response.ErrorListener() {
@@ -242,6 +243,9 @@ public class SettingActivity extends Activity {
             public void onResponse(String response) {
                 Log.d(TAG, "Setting update Response: " + response.toString());
                 System.out.println(response);
+                logoutUserB();
+                reLogin(emailTemp);
+
 
 
             }

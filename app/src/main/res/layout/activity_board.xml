@@ -79,7 +79,6 @@
         android:layout_marginLeft="10dp"
         android:layout_above="@+id/linearLayout2"
         android:layout_alignStart="@+id/linearLayout2" />
-
     <Button
         android:id="@+id/setting"
         android:layout_width="65dp"
@@ -90,5 +89,16 @@
         android:textStyle ="bold"
         android:layout_alignTop="@+id/linearLayout"
         android:layout_toStartOf="@+id/linearLayout" />
+    <Button
+        android:id="@+id/search"
+        android:layout_width="65dp"
+        app:font = "custom2"
+        android:layout_height="35dp"
+        android:background="@drawable/buttonbackground_close"
+        android:text="검색"
+        android:layout_marginLeft="15dp"
+        android:textStyle ="bold"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_toEndOf="@+id/btnLogout" />
 
 </RelativeLayout>

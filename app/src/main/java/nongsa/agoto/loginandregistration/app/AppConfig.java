@@ -8,7 +8,7 @@ public class AppConfig {
 	public static String URL_REGISTER = "http://52.79.61.227/login/register.php";
 
 	public static String URL_READ = "http://52.79.61.227/board/read.php";
-
+	public static String URL_READTWO = "http://52.79.61.227/board/readtwo.php";
 	public static String URL_WRITE = "http://52.79.61.227/board/write.php";
 
 	public static String URL_UPDATE = "http://52.79.61.227/login/update.php";
