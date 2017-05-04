@@ -76,7 +76,7 @@ public class EvalWriteActivity extends Activity {
                 float rating = rating_eval_write.getRating() * 2;
                 int ratingTo = (int)rating;
                 String ratingStr = Integer.toString(ratingTo);
-                writeEval(teacher, teacherName, writer_eval_write.getText().toString().trim(), ratingStr, review_eval_write.getText().toString().trim());
+                writeEval(teacher, teacherName, db.getUserDetails().get("email").toString().trim(), db.getUserDetails().get("name").toString().trim(), ratingStr, review_eval_write.getText().toString().trim());
                 EvalActivity.evalActivity.finish();
                 Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
                 intent.putExtra("email", teacher);
@@ -94,7 +94,7 @@ public class EvalWriteActivity extends Activity {
         });
     }
 
-    private void writeEval(final String teacher, final String teacherName, final String writer, final String star, final String review) {
+    private void writeEval(final String teacher, final String teacherName, final String writer, final String writerName, final String star, final String review) {
         // Tag used to cancel the request
         String tag_string_req = "req_eval";
 
@@ -125,6 +125,7 @@ public class EvalWriteActivity extends Activity {
                 params.put("teacher", teacher);
                 params.put("teacherName", teacherName);
                 params.put("writer", writer);
+                params.put("writerName", writerName);
                 params.put("star", star);
                 params.put("review", review);
 

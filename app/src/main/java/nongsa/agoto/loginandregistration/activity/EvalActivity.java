@@ -133,11 +133,12 @@ public class EvalActivity extends Activity {
                             String teacher = jArr.getJSONObject(i).getString("teacher");
                             String teacherName = jArr.getJSONObject(i).getString("teacherName");
                             String writer = jArr.getJSONObject(i).getString("writer");
+                            String writerName = jArr.getJSONObject(i).getString("writerName");
                             int star = jArr.getJSONObject(i).getInt("star");
                             String dat = jArr.getJSONObject(i).getString("dat");
                             String review = jArr.getJSONObject(i).getString("review");
 
-                            datas.add( new MemberData_eval(teacherName, writer, star, dat, review));
+                            datas.add( new MemberData_eval(teacherName, writerName, star, dat, review));
 
 
                         } else {
