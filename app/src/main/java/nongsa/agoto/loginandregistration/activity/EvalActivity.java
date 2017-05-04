@@ -57,6 +57,7 @@ public class EvalActivity extends Activity {
 
         Intent intent = getIntent();
         final String teacher = intent.getStringExtra("email");
+        final String teacherName = intent.getStringExtra("name");
 
 
         // SqLite database handler
@@ -84,13 +85,14 @@ public class EvalActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EvalWriteActivity.class);
                 intent.putExtra("teacher", teacher);
+                intent.putExtra("teacherName",teacherName);
                 startActivity(intent);
             }
         });
         //선생(히든)  게시자  (레이팅)별점 날짜 후기
 
 
-        getContent(teacher);
+        getContent(teacher, teacherName);
 
 
         list_eval = (ListView)findViewById(R.id.list_eval);
@@ -99,7 +101,7 @@ public class EvalActivity extends Activity {
 
 
 
-    private void getContent(final String teacher) {
+    private void getContent(final String teacher, final String teacherName) {
         // Tag used to cancel the request
         String tag_string_req = "req_get_content";
 
@@ -129,12 +131,13 @@ public class EvalActivity extends Activity {
                             int id = jArr.getJSONObject(i).getInt("id");
 
                             String teacher = jArr.getJSONObject(i).getString("teacher");
+                            String teacherName = jArr.getJSONObject(i).getString("teacherName");
                             String writer = jArr.getJSONObject(i).getString("writer");
                             int star = jArr.getJSONObject(i).getInt("star");
                             String dat = jArr.getJSONObject(i).getString("dat");
                             String review = jArr.getJSONObject(i).getString("review");
 
-                            datas.add( new MemberData_eval(teacher, writer, star, dat, review));
+                            datas.add( new MemberData_eval(teacherName, writer, star, dat, review));
 
 
                         } else {
@@ -179,6 +182,7 @@ public class EvalActivity extends Activity {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("teacher", teacher);
+                params.put("teacherName", teacherName);
 
                 return params;
             }

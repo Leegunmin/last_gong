@@ -64,9 +64,10 @@ public class EvalWriteActivity extends Activity {
 
         Intent intent = getIntent();
         final String teacher = intent.getStringExtra("teacher");
+        final String teacherName = intent.getStringExtra("teacherName");
 
-        writer_eval_write.setText(db.getUserDetails().get("email").toString().trim());
-        teacher_eval_write.setText(teacher);
+        writer_eval_write.setText(db.getUserDetails().get("name").toString().trim());
+        teacher_eval_write.setText(teacherName);
 
         write_eval_write.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +76,7 @@ public class EvalWriteActivity extends Activity {
                 float rating = rating_eval_write.getRating() * 2;
                 int ratingTo = (int)rating;
                 String ratingStr = Integer.toString(ratingTo);
-                writeEval(teacher, writer_eval_write.getText().toString().trim(), ratingStr, review_eval_write.getText().toString().trim());
+                writeEval(teacher, teacherName, writer_eval_write.getText().toString().trim(), ratingStr, review_eval_write.getText().toString().trim());
                 EvalActivity.evalActivity.finish();
                 Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
                 intent.putExtra("email", teacher);
@@ -92,7 +93,7 @@ public class EvalWriteActivity extends Activity {
         });
     }
 
-    private void writeEval(final String teacher, final String writer, final String star, final String review) {
+    private void writeEval(final String teacher, final String teacherName, final String writer, final String star, final String review) {
         // Tag used to cancel the request
         String tag_string_req = "req_eval";
 
@@ -121,6 +122,7 @@ public class EvalWriteActivity extends Activity {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("teacher", teacher);
+                params.put("teacherName", teacherName);
                 params.put("writer", writer);
                 params.put("star", star);
                 params.put("review", review);

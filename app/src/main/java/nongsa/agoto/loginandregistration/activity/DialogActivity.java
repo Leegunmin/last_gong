@@ -72,7 +72,7 @@ public class DialogActivity extends Activity {
 
         Intent intent = getIntent();
         final String email = intent.getStringExtra("email");
-        String name = intent.getStringExtra("name");
+        final String name = intent.getStringExtra("name");
         int exp = intent.getIntExtra("exp", 0);
         String grow = intent.getStringExtra("grow");
         String nation = intent.getStringExtra("nation");
@@ -193,6 +193,7 @@ public class DialogActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
                 intent.putExtra("email", email);
+                intent.putExtra("name", name);
                 startActivity(intent);
                 finish();
             }
