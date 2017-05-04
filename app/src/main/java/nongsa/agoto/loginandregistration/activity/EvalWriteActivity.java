@@ -80,6 +80,7 @@ public class EvalWriteActivity extends Activity {
                 EvalActivity.evalActivity.finish();
                 Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
                 intent.putExtra("email", teacher);
+                intent.putExtra("name", teacherName);
                 startActivity(intent);
                 finish();
             }
