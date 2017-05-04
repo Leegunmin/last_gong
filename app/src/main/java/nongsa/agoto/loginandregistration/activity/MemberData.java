@@ -18,8 +18,9 @@ public class MemberData {
     String grow; //재배 작물
     String intro;
     String phone;
+    String star;
 
-    public MemberData(String email, String name, String nation, Uri imgId, int exp, String grow, String intro, String phone)  {
+    public MemberData(String email, String name, String nation, Uri imgId, int exp, String grow, String intro, String phone, String star)  {
         // TODO Auto-generated constructor stub
 
         //생성자함수로 전달받은 Member의 정보를 멤버변수에 저장..
@@ -31,6 +32,7 @@ public class MemberData {
         this.grow=grow;
         this.intro=intro;
         this.phone=phone;
+        this.star=star;
     }
 
     //이 아래는 getter , setter 메소드듭입니다.
@@ -68,6 +70,14 @@ public class MemberData {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getStar() {
+        return star;
+    }
+
+    public void setStar(String star) {
+        this.star = star;
     }
 
     public void setEmail(String email) {
