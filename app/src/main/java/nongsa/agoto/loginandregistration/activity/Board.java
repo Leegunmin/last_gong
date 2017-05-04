@@ -184,6 +184,7 @@ public class Board extends Activity {
 
             Intent intent = new Intent(Board.this , DialogActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("email", datas.get(pos).getEmail().toString());
             intent.putExtra("name",datas.get(pos).getName().toString());
             intent.putExtra("exp",datas.get(pos).getExp());
             intent.putExtra("grow",datas.get(pos).getGrow().toString());
@@ -236,7 +237,7 @@ public class Board extends Activity {
                             String intro = jArr.getJSONObject(i).getString("intro");
                             String phone = jArr.getJSONObject(i).getString("phone");
 
-                            datas.add( new MemberData(name, nation, myUri, exp, grow, intro, phone));
+                            datas.add( new MemberData(email, name, nation, myUri, exp, grow, intro, phone));
 
 
                         } else {

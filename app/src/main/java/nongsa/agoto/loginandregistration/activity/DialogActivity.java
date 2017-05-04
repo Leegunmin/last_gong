@@ -46,6 +46,7 @@ public class DialogActivity extends Activity {
     Button phone_dial;
     Button close_dial;
     String finalPhone;
+    Button eval_dial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +68,10 @@ public class DialogActivity extends Activity {
 
         phone_dial = (Button) findViewById(R.id.phone_dial);
         close_dial = (Button) findViewById(R.id.close_dial);
+        eval_dial = (Button)findViewById(R.id.eval_dial);
 
         Intent intent = getIntent();
+        final String email = intent.getStringExtra("email");
         String name = intent.getStringExtra("name");
         int exp = intent.getIntExtra("exp", 0);
         String grow = intent.getStringExtra("grow");
@@ -183,6 +186,16 @@ public class DialogActivity extends Activity {
                 }
             }
 
+        });
+
+        eval_dial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent.putExtra("email", email);
+                startActivity(intent);
+                finish();
+            }
         });
     }
     @Override

@@ -10,6 +10,7 @@ import android.net.Uri;
 
 public class MemberData {
 
+    String email;
     String name;    //이름 저장
     String nation;   //지역 저장
     Uri imgId;      //국기 이미지의 리소스 아이디
@@ -18,10 +19,11 @@ public class MemberData {
     String intro;
     String phone;
 
-    public MemberData(String name, String nation, Uri imgId, int exp, String grow, String intro, String phone)  {
+    public MemberData(String email, String name, String nation, Uri imgId, int exp, String grow, String intro, String phone)  {
         // TODO Auto-generated constructor stub
 
         //생성자함수로 전달받은 Member의 정보를 멤버변수에 저장..
+        this.email = email;
         this.name= name;
         this.nation=nation;
         this.imgId=imgId;
@@ -62,6 +64,14 @@ public class MemberData {
 
     public void setPhone(String phone) {
         this.grow=phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {
