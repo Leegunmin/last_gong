@@ -72,8 +72,9 @@ public class EvalWriteActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                int rating = (int)rating_eval_write.getRating() * 2;
-                String ratingStr = Integer.toString(rating);
+                float rating = rating_eval_write.getRating() * 2;
+                int ratingTo = (int)rating;
+                String ratingStr = Integer.toString(ratingTo);
                 writeEval(teacher, writer_eval_write.getText().toString().trim(), ratingStr, review_eval_write.getText().toString().trim());
                 EvalActivity.evalActivity.finish();
                 Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
