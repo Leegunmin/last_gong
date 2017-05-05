@@ -234,7 +234,7 @@ public class vacants extends AppCompatActivity {
             SMA_LIST_MENU.add("산청군");
             SMA_LIST_MENU.add("의령군");
             ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(vacants.this,R.layout.simple_spinner_item_custom,SMA_LIST_MENU);
-            sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
             small_city_spinner.setAdapter(sAdapter);
         }
         else if(city.equals("경상북도")){

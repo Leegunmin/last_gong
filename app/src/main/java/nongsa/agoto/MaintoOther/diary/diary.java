@@ -101,7 +101,7 @@ public class diary extends AppCompatActivity {
                         SECOND_LIST_MENU.add("맥주보리");
                         SECOND_LIST_MENU.add("밀");
                         SECOND_LIST_MENU.add("콩");
-                        ArrayAdapter adapter = new ArrayAdapter(diary.this, android.R.layout.simple_list_item_1, SECOND_LIST_MENU);
+                        ArrayAdapter adapter = new ArrayAdapter(diary.this, R.layout.simple_list_item_1_custom, SECOND_LIST_MENU);
                         adapter.notifyDataSetChanged();
                         listview.setAdapter(adapter);
                     } else if (LIST_MENU.get(position).equals("벼")) {
