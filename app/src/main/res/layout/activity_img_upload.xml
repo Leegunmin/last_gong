@@ -45,7 +45,7 @@
             android:id="@+id/selimg"
             android:layout_width="40dp"
             android:background="#ffffff"
-            android:src="@drawable/korea"
+            android:src="@drawable/folder"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
         <ImageButton
@@ -54,7 +54,7 @@
 
             android:id="@+id/uploadimg"
             android:background="#ffffff"
-            android:src="@drawable/russia"
+            android:src="@drawable/upload"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
@@ -64,7 +64,7 @@
 
             android:id="@+id/img_delete"
             android:background="#ffffff"
-            android:src="@drawable/italy"
+            android:src="@drawable/close"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 

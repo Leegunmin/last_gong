@@ -57,9 +57,11 @@
 
         <ListView
             android:id="@+id/listview"
+            android:dividerHeight="4dp"
+            android:divider="@drawable/background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
+            android:background="@drawable/background"
             app:font = "custom2"
             android:layout_marginTop="5dp" />
 

@@ -119,7 +119,7 @@
             android:orientation="horizontal"
             android:layout_gravity="center">
 
-            <EditText
+            <Spinner
                 android:id="@+id/nation_setting"
                 android:layout_width="150dp"
                 android:layout_height="60dp"
@@ -132,7 +132,7 @@
                 android:inputType="textPersonName"
                 android:hint="지역(시/도)" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/subNation_setting"
                 android:layout_width="150dp"
                 android:layout_height="60dp"

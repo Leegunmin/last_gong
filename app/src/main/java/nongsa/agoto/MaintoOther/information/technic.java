@@ -849,17 +849,17 @@ public class technic extends AppCompatActivity {
                 try {
                     thread.join();
                     if(temp_movie.equals("movie")){
-                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom, movie_title);
+                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom_technic, movie_title);
                         adapter.notifyDataSetChanged();
                         listview.setAdapter(m_Adapter);
                     }
                     else if(temp_movie.equals("variety")){
-                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom, SMA_TECH_LIST_MENU);
+                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom_technic, SMA_TECH_LIST_MENU);
                         adapter.notifyDataSetChanged();
                         listview.setAdapter(adapter);
                     }
                     else {
-                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom, SMA_TECH_LIST_MENU);
+                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom_technic, SMA_TECH_LIST_MENU);
                         adapter.notifyDataSetChanged();
                         listview.setAdapter(adapter);
                     }
@@ -985,7 +985,7 @@ public class technic extends AppCompatActivity {
                     thread.start();
                     try {
                         thread.join();
-                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom, LAST_TECH_LIST_CODE);
+                        ArrayAdapter adapter = new ArrayAdapter(technic.this, R.layout.simple_list_item_1_custom_technic, LAST_TECH_LIST_CODE);
                         adapter.notifyDataSetChanged();
                         listview.setAdapter(adapter);
                     } catch (InterruptedException e) {
