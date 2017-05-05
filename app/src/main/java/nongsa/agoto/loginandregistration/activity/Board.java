@@ -255,8 +255,8 @@ public class Board extends Activity {
                                 Uri myUri = Uri.parse("http://52.79.61.227/file/uploads/" + email + ".jpg");
                                 String intro = jArr.getJSONObject(i).getString("intro");
                                 String phone = jArr.getJSONObject(i).getString("phone");
-
-                                datas.add(new MemberData(name, nation, myUri, exp, grow, intro, phone));
+                                String star = jArr.getJSONObject(i).getString("star");
+                                datas.add(new MemberData(email,name, nation, myUri, exp, grow, intro, phone,star));
 
 
                             } else {

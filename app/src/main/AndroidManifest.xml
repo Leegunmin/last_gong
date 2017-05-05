@@ -15,7 +15,6 @@
 
     <application
         android:name=".loginandregistration.app.AppController"
-        android:debuggable="false"
         android:allowBackup="true"
         android:debuggable="false"
         android:icon="@drawable/logo2"
