@@ -79,12 +79,7 @@ public class EvalWriteActivity extends Activity {
                 int ratingTo = (int)rating;
                 String ratingStr = Integer.toString(ratingTo);
                 writeEval(teacher, teacherName, db.getUserDetails().get("email").toString().trim(), db.getUserDetails().get("name").toString().trim(), ratingStr, review_eval_write.getText().toString().trim());
-                EvalActivity.evalActivity.finish();
-                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
-                intent.putExtra("email", teacher);
-                intent.putExtra("name", teacherName);
-                startActivity(intent);
-                finish();
+
             }
         });
 
@@ -138,6 +133,12 @@ public class EvalWriteActivity extends Activity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+        EvalActivity.evalActivity.finish();
+        Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+        intent.putExtra("email", teacher);
+        intent.putExtra("name", teacherName);
+        startActivity(intent);
+        finish();
     }
 
     private void logoutUser() {
