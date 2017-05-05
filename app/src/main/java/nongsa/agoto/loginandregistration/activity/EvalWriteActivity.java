@@ -133,8 +133,11 @@ public class EvalWriteActivity extends Activity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+        Board.board.finish();
+        Intent intent = new Intent(getApplicationContext(), Board.class);
+        startActivity(intent);
         EvalActivity.evalActivity.finish();
-        Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+        intent = new Intent(getApplicationContext(), EvalActivity.class);
         intent.putExtra("email", teacher);
         intent.putExtra("name", teacherName);
         startActivity(intent);
