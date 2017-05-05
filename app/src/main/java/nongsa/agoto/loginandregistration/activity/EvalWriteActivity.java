@@ -107,7 +107,7 @@ public class EvalWriteActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), Board.class);
                 startActivity(intent);
                 EvalActivity.evalActivity.finish();
-                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent = new Intent(getApplicationContext(), EvalActivity.class);
                 intent.putExtra("email", teacher);
                 intent.putExtra("name", teacherName);
                 startActivity(intent);
@@ -125,7 +125,7 @@ public class EvalWriteActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), Board.class);
                 startActivity(intent);
                 EvalActivity.evalActivity.finish();
-                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent = new Intent(getApplicationContext(), EvalActivity.class);
                 intent.putExtra("email", teacher);
                 intent.putExtra("name", teacherName);
                 startActivity(intent);
