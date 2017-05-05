@@ -103,7 +103,12 @@ public class EvalWriteActivity extends Activity {
             public void onResponse(String response) {
                 Log.d(TAG, "Setting update Response: " + response.toString());
                 System.out.println(response);
-
+                EvalActivity.evalActivity.finish();
+                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent.putExtra("email", teacher);
+                intent.putExtra("name", teacherName);
+                startActivity(intent);
+                finish();
 
             }
         }, new Response.ErrorListener() {
@@ -113,6 +118,12 @@ public class EvalWriteActivity extends Activity {
                 Log.e(TAG, "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
+                EvalActivity.evalActivity.finish();
+                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent.putExtra("email", teacher);
+                intent.putExtra("name", teacherName);
+                startActivity(intent);
+                finish();
             }
         }) {
             @Override
@@ -133,12 +144,7 @@ public class EvalWriteActivity extends Activity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-        EvalActivity.evalActivity.finish();
-        Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
-        intent.putExtra("email", teacher);
-        intent.putExtra("name", teacherName);
-        startActivity(intent);
-        finish();
+
     }
 
     private void logoutUser() {
