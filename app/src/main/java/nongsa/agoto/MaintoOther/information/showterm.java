@@ -40,6 +40,8 @@ public class showterm extends Activity {
             String name = intent.getStringExtra("name");
             String context = intent.getStringExtra("context");
             termname.setText(name);
+            context = context.replaceAll("&#40;","(");
+            context = context.replaceAll("&#41;",")");
             termcontext.setText(context);
 
          termclose.setOnClickListener(new View.OnClickListener(){
