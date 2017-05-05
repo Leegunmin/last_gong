@@ -46,23 +46,20 @@ public class SettingActivity extends Activity {
     private Button btnLogout;
     private Button pay;
     String small_code;
-
+    int division;
     private static ImageView img_setting;
     private EditText name_setting;
     private EditText phone_setting;
     private EditText exp_setting;
-    Spinner nation_setting;
-    Spinner subNation_setting;
-
-    int division;
+    private Spinner nation_setting;
+    private Spinner subNation_setting;
     private EditText grow_setting;
     private EditText intro_setting;
     private Button revise_setting;
     private Button upload_setting;
-
+    String emailTemp;
     private SQLiteHandler db;
     private SessionManager session;
-
     final ArrayList<String> EXT_SIDO_NAME = new ArrayList<String>();
     final ArrayList<String> EXT_SIDO_CODE = new ArrayList<String>();
     final ArrayList<String> EXT_GUNGGI_NAME = new ArrayList<String>();
@@ -83,8 +80,7 @@ public class SettingActivity extends Activity {
     final ArrayList<String> EXT_GUNBOOK_CODE = new ArrayList<String>();
     final ArrayList<String> EXT_JEJU_NAME = new ArrayList<String>();
     final ArrayList<String> EXT_JEJU_CODE = new ArrayList<String>();
-
-
+    int count2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,16 +91,17 @@ public class SettingActivity extends Activity {
 
         btnLogout = (Button) findViewById(R.id.logout_setting);
         pay = (Button) findViewById(R.id.pay_setting);
-        img_setting = (ImageView) findViewById(R.id.img_setting);
-        name_setting = (EditText) findViewById(R.id.name_setting);
-        phone_setting = (EditText) findViewById(R.id.phone_setting);
-        exp_setting = (EditText) findViewById(R.id.exp_setting);
-        nation_setting = (Spinner) findViewById(R.id.nation_setting);
-        subNation_setting = (Spinner) findViewById(R.id.subNation_setting);
-        grow_setting = (EditText) findViewById(R.id.grow_setting);
-        intro_setting = (EditText) findViewById(R.id.intro_setting);
-        revise_setting = (Button) findViewById(R.id.revise_setting);
-        upload_setting = (Button) findViewById(R.id.upload_setting);
+        img_setting = (ImageView)findViewById(R.id.img_setting);
+        name_setting = (EditText)findViewById(R.id.name_setting);
+        phone_setting = (EditText)findViewById(R.id.phone_setting);
+        exp_setting = (EditText)findViewById(R.id.exp_setting);
+        nation_setting = (Spinner)findViewById(R.id.nation_setting);
+        subNation_setting = (Spinner)findViewById(R.id.subNation_setting);
+        grow_setting = (EditText)findViewById(R.id.grow_setting);
+        intro_setting = (EditText)findViewById(R.id.intro_setting);
+        revise_setting = (Button)findViewById(R.id.revise_setting);
+        upload_setting = (Button)findViewById(R.id.upload_setting);
+
 
 
         // SqLite database handler
@@ -119,6 +116,7 @@ public class SettingActivity extends Activity {
 
         setImg();
 
+
         ArrayAdapter<String> sAdapter = new ArrayAdapter<String>(SettingActivity.this, R.layout.simple_spinner_item_custom, EXT_SIDO_NAME);
         sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
         nation_setting.setAdapter(sAdapter);
@@ -130,66 +128,74 @@ public class SettingActivity extends Activity {
             }
         }
 
-        int count2 = 0;
-
+        count2= 0;
+        System.out.println("hihihi "+db.getUserDetails().get("subNationB"));
         for (int j = 0; j < EXT_GUNGGI_NAME.size(); j++) {
             if (EXT_GUNGGI_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here1 "+j);
             }
         }
 
         for (int j = 0; j < EXT_CHUNGBOOK_NAME.size(); j++) {
             if (EXT_CHUNGBOOK_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here2 "+j);
             }
         }
 
         for (int j = 0; j < EXT_CHUNGNAM_NAME.size(); j++) {
             if (EXT_CHUNGNAM_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here3 "+j);
             }
         }
 
         for (int j = 0; j < EXT_GUNBOOK_NAME.size(); j++) {
             if (EXT_GUNBOOK_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here4 "+j);
             }
         }
 
         for (int j = 0; j < EXT_GUNNAM_NAME.size(); j++) {
             if (EXT_GUNNAM_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here5 "+j);
             }
         }
 
         for (int j = 0; j <EXT_CHUNGBOOK_NAME.size(); j++) {
             if (EXT_CHUNGBOOK_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here6 "+j);
             }
         }
 
         for (int j = 0; j < EXT_GANGWON_NAME.size(); j++) {
             if (EXT_GANGWON_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here7 "+j);
             }
         }
 
         for (int j = 0; j < EXT_GUNNAM_NAME.size(); j++) {
             if (EXT_GUNNAM_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here8 "+j);
             }
         }
 
         for (int j = 0; j < EXT_GUNBOOK_NAME.size(); j++) {
             if (EXT_GUNBOOK_NAME.get(j).equals(db.getUserDetails().get("subNationB"))) {
                 count2 = j;
+                System.out.println("hihihi here9 "+j);
             }
         }
 
 
 
         nation_setting.setSelection(count);
-        subNation_setting.setSelection(count2);
 
 
         name_setting.setText(db.getUserDetails().get("name"));
@@ -197,6 +203,9 @@ public class SettingActivity extends Activity {
         exp_setting.setText(db.getUserDetails().get("exp"));
         grow_setting.setText(db.getUserDetails().get("grow"));
         intro_setting.setText(db.getUserDetails().get("intro"));
+        // Logout button click event
+
+
         // Logout button click event
         nation_setting.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
@@ -206,54 +215,63 @@ public class SettingActivity extends Activity {
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     division = 1;
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("강원도")){
                     division = 2;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_GANGWON_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("충청북도")){
                     division = 3;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_CHUNGBOOK_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("충청남도")){
                     division = 4;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_CHUNGNAM_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("전라북도")){
                     division = 5;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_JUNBOOK_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("전라남도")){
                     division = 6;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_JUNNAM_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("경상북도")){
                     division = 7;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_GUNBOOK_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("경상남도")){
                     division = 8;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_GUNNAM_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("제주도")){
                     division = 9;
                     ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_JEJU_NAME);
                     sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
                     subNation_setting.setAdapter(sAdapter);
+                    subNation_setting.setSelection(count2);
                 }
             }
 
@@ -322,15 +340,11 @@ public class SettingActivity extends Activity {
         revise_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailTemp = db.getUserDetails().get("email").toString().trim();
+                System.out.println("why not : "+db.getUserDetails().get("email"));
+                 emailTemp = db.getUserDetails().get("email").toString().trim();
                 updateInfo(emailTemp, name_setting.getText().toString().trim(), phone_setting.getText().toString().trim(), exp_setting.getText().toString().trim(), grow_setting.getText().toString().trim(), intro_setting.getText().toString().trim(),
                         nation_setting.getSelectedItem().toString().trim(), subNation_setting.getSelectedItem().toString().trim());
-                logoutUserB();
-                reLogin(emailTemp);
-                Board.board.finish();//모름모름
-                Intent intent = new Intent(getApplicationContext(), Board.class);
-                startActivity(intent);
-                finish();
+
 
             }
         });
@@ -348,6 +362,7 @@ public class SettingActivity extends Activity {
 
     private void reLogin(final String email) {
         // Tag used to cancel the request
+        System.out.println("hohoho1");
         String tag_string_req = "req_login";
 
 
@@ -356,10 +371,13 @@ public class SettingActivity extends Activity {
 
             @Override
             public void onResponse(String response) {
+                System.out.println("hohoho9");
+                System.out.println("hohoho9"+ response.toString());
                 Log.d(TAG, "Login Response: " + response.toString());
                 System.out.println(response);
 
                 try {
+                    System.out.println("hohoho3");
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
 
@@ -385,7 +403,8 @@ public class SettingActivity extends Activity {
 
                         String subNationA = user.getString("subNationA");
                         String subNationB = user.getString("subNationB");
-
+                        System.out.println("hohoho "+ exp);
+                        System.out.println("hohoho "+ auth);
                         System.out.println(name);
                         System.out.println(email);
                         System.out.println(phone);
@@ -397,13 +416,18 @@ public class SettingActivity extends Activity {
                         // Error in login. Get the error message
                         String errorMsg = jObj.getString("error_msg");
                         Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+                                "gunmingunmingjun1"+errorMsg, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     // JSON error
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "gunmingunmingjun0 Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
+
+                Board.board.finish();//모름모름
+                Intent intent = new Intent(getApplicationContext(), Board.class);
+                startActivity(intent);
+                finish();
 
             }
         }, new Response.ErrorListener() {
@@ -412,7 +436,7 @@ public class SettingActivity extends Activity {
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                        "gunmingunmingjun2" + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }) {
 
@@ -443,7 +467,10 @@ public class SettingActivity extends Activity {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Setting update Response: " + response.toString());
-                System.out.println(response);
+                logoutUserB();
+                System.out.println("hohoho2");
+                reLogin(emailTemp);
+
 
 
             }
@@ -453,7 +480,7 @@ public class SettingActivity extends Activity {
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                        "gunmingunmingjun3" +error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
@@ -537,6 +564,7 @@ public class SettingActivity extends Activity {
         });
         t.start();
     }
+
     public void Init(){
         EXT_SIDO_NAME.add("경기도"); EXT_SIDO_CODE.add("6410000");EXT_SIDO_NAME.add("강원도");EXT_SIDO_CODE.add("6420000");EXT_SIDO_NAME.add("충청북도");
         EXT_SIDO_CODE.add("6430000");EXT_SIDO_NAME.add("충청남도");EXT_SIDO_CODE.add("6440000");EXT_SIDO_NAME.add("전라북도");EXT_SIDO_CODE.add("6450000");EXT_SIDO_NAME.add("전라남도");
@@ -859,7 +887,6 @@ public class SettingActivity extends Activity {
         EXT_GUNGGI_CODE.add("5600000");
 
     }
-
 
 
 }

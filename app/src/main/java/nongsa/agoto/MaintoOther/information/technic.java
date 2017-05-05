@@ -2,6 +2,7 @@ package nongsa.agoto.MaintoOther.information;
 
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -996,65 +997,25 @@ public class technic extends AppCompatActivity {
                     try {
                         a = LAST_TECH_LIST_URL.get(position);
                         b = LAST_TECH_LIST_CODE.get(position);
-                        //feed();
+
+
                         Intent intent = new Intent(technic.this,Webview.class);
                         intent.putExtra("link",a);
                         technic.this.startActivity(intent);
+
 //                        InputStream inputStream = new URL(LAST_TECH_LIST_URL.get(position)).openStream();
 //
 //                        File file = new File(LAST_TECH_LIST_CODE.get(position));
 //                        OutputStream out = new FileOutputStream(file);
 //                        writeFile(inputStream, out);
 //                        out.close();
+
                     }catch(Exception e){
                         e.printStackTrace();
                     }
                 }
             }
         });
-    }
-    private void feed()
-    {
-        new ProcessFacebookTask().execute("url", "1", "1");
-    }
-
-    //AsyncTask<Params,Progress,Result>
-    private class ProcessFacebookTask extends AsyncTask<String, String, String> {
-        ProgressDialog mDlg;
-
-        protected void onPreExecute() {
-            mDlg = new ProgressDialog(technic.this);
-            mDlg.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            mDlg.setMessage("Start");
-            mDlg.show();
-        }
-        @Override
-        protected String doInBackground(String... params) {
-
-
-                // 작업이 진행되면서 호출하며 화면의 업그레이드를 담당하게 된다
-                //publishProgress("progress", 1, "Task " + 1 + " number");
-
-            return null;
-        }
-
-        protected void onProgressUpdate(String... progress) {
-            if (progress[0].equals("progress")) {
-                System.out.println("hello4");
-                mDlg.setProgress(Integer.parseInt(progress[1]));
-                mDlg.setMessage(progress[2]);
-            } else if (progress[0].equals("max")) {
-                mDlg.setMax(Integer.parseInt(progress[1]));
-            }
-        }
-        @SuppressWarnings("deprecation")
-        @Override
-        protected void onPostExecute(String unused) {
-            mDlg.dismiss();
-
-        }
-
-
     }
 
     public void writeFile(InputStream is, OutputStream os) throws IOException

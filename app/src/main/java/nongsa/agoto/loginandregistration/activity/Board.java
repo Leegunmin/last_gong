@@ -463,7 +463,11 @@ public class Board extends Activity {
 
    public static  void hideDialog() {
         if (pDialog.isShowing())
-            pDialog.dismiss();
+            try {
+                pDialog.dismiss();
+            }catch(Exception e ){
+                e.printStackTrace();
+            }
     }
     @Override
     protected void attachBaseContext(Context newBase) {

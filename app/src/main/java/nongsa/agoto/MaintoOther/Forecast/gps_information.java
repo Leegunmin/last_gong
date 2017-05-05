@@ -6,6 +6,7 @@ package nongsa.agoto.MaintoOther.Forecast;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +20,10 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+
+import nongsa.agoto.loginandregistration.activity.Board;
+
+import static nongsa.agoto.MaintoOther.Forecast.TodayWeather.todayWeather;
 
 public class gps_information extends Service implements LocationListener {
 
@@ -165,7 +170,7 @@ public class gps_information extends Service implements LocationListener {
      * */
     public void showSettingsAlert(){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-
+        alertDialog.setCancelable(false);
         alertDialog.setTitle("GPS 사용유무셋팅");
         alertDialog.setMessage("GPS 셋팅이 되지 않았을수도 있습니다.\n 설정창으로 가시겠습니까?");
 
@@ -183,6 +188,7 @@ public class gps_information extends Service implements LocationListener {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
+                        todayWeather.finish();
                     }
                 });
 
