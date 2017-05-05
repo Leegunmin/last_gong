@@ -103,7 +103,15 @@ public class EvalWriteActivity extends Activity {
             public void onResponse(String response) {
                 Log.d(TAG, "Setting update Response: " + response.toString());
                 System.out.println(response);
-
+                Board.board.finish();
+                Intent intent = new Intent(getApplicationContext(), Board.class);
+                startActivity(intent);
+                EvalActivity.evalActivity.finish();
+                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent.putExtra("email", teacher);
+                intent.putExtra("name", teacherName);
+                startActivity(intent);
+                finish();
 
             }
         }, new Response.ErrorListener() {
@@ -113,6 +121,15 @@ public class EvalWriteActivity extends Activity {
                 Log.e(TAG, "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
+                Board.board.finish();
+                Intent intent = new Intent(getApplicationContext(), Board.class);
+                startActivity(intent);
+                EvalActivity.evalActivity.finish();
+                Intent intent = new Intent(getApplicationContext(), EvalActivity.class);
+                intent.putExtra("email", teacher);
+                intent.putExtra("name", teacherName);
+                startActivity(intent);
+                finish();
             }
         }) {
             @Override
@@ -133,15 +150,6 @@ public class EvalWriteActivity extends Activity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-        Board.board.finish();
-        Intent intent = new Intent(getApplicationContext(), Board.class);
-        startActivity(intent);
-        EvalActivity.evalActivity.finish();
-        intent = new Intent(getApplicationContext(), EvalActivity.class);
-        intent.putExtra("email", teacher);
-        intent.putExtra("name", teacherName);
-        startActivity(intent);
-        finish();
     }
 
     private void logoutUser() {
