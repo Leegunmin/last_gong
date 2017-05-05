@@ -99,13 +99,7 @@ public class VacantAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     // 터치 시 해당 아이템 이름 출력
-                    if(vacants.fullcityname.get(position).equals("부동산 정보가 필요하시면 클릭하세요.")){
-                        Intent intent = new Intent(parent.getContext(), field.class);
-                        intent.putExtra("bigcity", vacants.cityname.get(position));
-                        intent.putExtra("smallcity", vacants.smallcityname.get(position));
-                        parent.getContext().startActivity(intent);
-                    }
-                    else {
+
                         Intent intent = new Intent(parent.getContext(), showvacant.class);
                         intent.putExtra("image_url", vacants.image_url.get(position));
                         intent.putExtra("bigcity", vacants.cityname.get(position));
@@ -122,8 +116,6 @@ public class VacantAdapter extends BaseAdapter {
                         parent.getContext().startActivity(intent);
                     }
 
-
-                }
             });
 
             // 리스트 아이템을 길게 터치 했을 떄 이벤트 발생

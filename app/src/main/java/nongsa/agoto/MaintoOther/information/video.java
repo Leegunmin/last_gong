@@ -30,6 +30,7 @@ public class video extends AppCompatActivity {
     Button video_back;
     Button video_go;
     Button button_main;
+    String query ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +49,7 @@ public class video extends AppCompatActivity {
                 boolean inItem = false, inTitle = false, inAddress = false, inMapx = false, inMapy = false;
 
                 String title = null, address = null, mapx = null, mapy = null;
-                String query = "농업"; //이부부은 검색어를 UTF-8로 넣어줄거임.
-                System.out.println(query);
+               //이부부은 검색어를 UTF-8로 넣어줄거임.
 
                 try {
                     URL url = new URL("http://api.nongsaro.go.kr/service/agriTechVideo/videoList?"
@@ -160,7 +160,7 @@ public class video extends AppCompatActivity {
                         boolean inItem = false, inTitle = false, inAddress = false, inMapx = false, inMapy = false;
 
                         String title = null, address = null, mapx = null, mapy = null;
-                        String query =video_edit.getText().toString(); //이부부은 검색어를 UTF-8로 넣어줄거임.
+                        query =video_edit.getText().toString(); //이부부은 검색어를 UTF-8로 넣어줄거임.
                         System.out.println(query);
 
                         try {
@@ -284,12 +284,13 @@ public class video extends AppCompatActivity {
                         boolean inItem = false, inTitle = false, inAddress = false, inMapx = false, inMapy = false;
 
                         String title = null, address = null, mapx = null, mapy = null;
-                        String query = "농업"; //이부부은 검색어를 UTF-8로 넣어줄거임.
                         System.out.println(query);
 
                         try {
                             URL url = new URL("http://api.nongsaro.go.kr/service/agriTechVideo/videoList?"
                                     + "apiKey=20170410IFDID996CLWJ8KOOTVQBA"
+                                    +"&videoTitle="
+                                    + query
                                     +"&pageNo="+channel//여기는 쿼리를 넣으세요(검색어)
                             );
 
@@ -398,12 +399,13 @@ public class video extends AppCompatActivity {
                         boolean inItem = false, inTitle = false, inAddress = false, inMapx = false, inMapy = false;
 
                         String title = null, address = null, mapx = null, mapy = null;
-                        String query = "농업"; //이부부은 검색어를 UTF-8로 넣어줄거임.
-                        System.out.println(query);
+
 
                         try {
                             URL url = new URL("http://api.nongsaro.go.kr/service/agriTechVideo/videoList?"
                                     + "apiKey=20170410IFDID996CLWJ8KOOTVQBA"
+                                    +"&videoTitle="
+                                    + query
                                     +"&pageNo="+channel//여기는 쿼리를 넣으세요(검색어)
                             );
 

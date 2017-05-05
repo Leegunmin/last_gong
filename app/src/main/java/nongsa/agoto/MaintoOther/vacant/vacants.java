@@ -104,6 +104,21 @@ public class vacants extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d("hello", "Get Response: " + response.toString());
+                LIST_MENU = new ArrayList<String>();
+                SMA_LIST_MENU = new ArrayList<String>();
+                cityname = new ArrayList<String>();
+                smallcityname =new ArrayList<String>();
+                fullcityname = new ArrayList<String>();
+                wish_price = new ArrayList<String>();
+                provide_name =new ArrayList<String>();
+                filed_size = new ArrayList<String>();
+                build_size = new ArrayList<String>();
+                another_size = new ArrayList<String>();;
+                build_year = new ArrayList<String>();
+                vacant_year = new ArrayList<String>();
+                have_name = new ArrayList<String>();
+                phone = new ArrayList<String>();
+                image_url = new ArrayList<String>();
                 try {
                     JSONObject jObj = new JSONObject(response);
                     JSONArray jArr = jObj.getJSONArray("result");
