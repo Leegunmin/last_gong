@@ -133,7 +133,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="WEATHER_FORECAST"
+        android:text="내일 날씨"
         app:font="custom2"
         android:background="@drawable/buttonbackground_term"
         android:paddingLeft="10dp"
