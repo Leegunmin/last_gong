@@ -3,6 +3,7 @@ package nongsa.agoto.MaintoOther.Forecast;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -19,9 +20,11 @@ import android.view.View.OnClickListener;
 import nongsa.agoto.MaintoOther.Forecast.gps_information;
 import nongsa.agoto.R;
 
+import static java.lang.Thread.sleep;
+
 
 public class TodayWeather extends AppCompatActivity implements OnClickListener {
-
+    public static Activity todayWeather;
     static String weather_citys;
     static TodayWeather exit_today ;
 
@@ -37,6 +40,8 @@ public class TodayWeather extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_weather);
+
+        todayWeather = TodayWeather.this;
         exit_today = (TodayWeather) TodayWeather.this;
 
         btn_intent = (Button) findViewById(R.id.btn_intent);
@@ -82,6 +87,16 @@ public class TodayWeather extends AppCompatActivity implements OnClickListener {
         // GPS 사용유무 가져오기
         gps = new gps_information(TodayWeather.this);
         if (gps.isGetLocation()) {
+            if(gps.getLatitude()<=0 && gps.getLongitude()<=0){
+                try {
+                    sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(getApplicationContext(), TodayWeather.class);
+                startActivity(intent);
+                finish();
+            }
             System.out.println("lat1: ");
             double latitude = gps.getLatitude();
             System.out.println("lat2: " + latitude);
