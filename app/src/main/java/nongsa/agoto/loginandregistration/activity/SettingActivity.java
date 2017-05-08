@@ -117,8 +117,8 @@ public class SettingActivity extends Activity {
         setImg();
 
 
-        ArrayAdapter<String> sAdapter = new ArrayAdapter<String>(SettingActivity.this, R.layout.simple_spinner_item_custom, EXT_SIDO_NAME);
-        sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+        ArrayAdapter<String> sAdapter = new ArrayAdapter<String>(SettingActivity.this, R.layout.simple_spinner_item_custom_setting, EXT_SIDO_NAME);
+        sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
         nation_setting.setAdapter(sAdapter);
 
         int count = 0;
@@ -211,65 +211,65 @@ public class SettingActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
 
                 if(EXT_SIDO_NAME.get(position).equals("경기도")){
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_GUNGGI_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_GUNGGI_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     division = 1;
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("강원도")){
                     division = 2;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_GANGWON_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_GANGWON_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("충청북도")){
                     division = 3;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_CHUNGBOOK_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_CHUNGBOOK_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("충청남도")){
                     division = 4;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_CHUNGNAM_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_CHUNGNAM_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("전라북도")){
                     division = 5;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_JUNBOOK_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_JUNBOOK_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("전라남도")){
                     division = 6;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_JUNNAM_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_JUNNAM_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("경상북도")){
                     division = 7;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_GUNBOOK_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_GUNBOOK_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("경상남도")){
                     division = 8;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_GUNNAM_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_GUNNAM_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
                 else if(EXT_SIDO_NAME.get(position).equals("제주도")){
                     division = 9;
-                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom,EXT_JEJU_NAME);
-                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom);
+                    ArrayAdapter<String> sAdapter= new ArrayAdapter<String>(SettingActivity.this,R.layout.simple_spinner_item_custom_setting,EXT_JEJU_NAME);
+                    sAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item_custom_setting);
                     subNation_setting.setAdapter(sAdapter);
                     subNation_setting.setSelection(count2);
                 }
