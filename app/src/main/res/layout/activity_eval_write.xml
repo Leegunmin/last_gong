@@ -99,7 +99,7 @@
                 android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_gravity="center"
+            android:layout_marginLeft="17dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -107,6 +107,7 @@
             android:layout_marginBottom="5dp"
             android:background="#ffffff">
             <TextView
+
                 android:layout_width="52dp"
                 android:layout_height="match_parent"
                 android:text = "별점"
@@ -118,7 +119,7 @@
             <RatingBar
                 android:id="@+id/rating_eval_write"
                 style="@style/Widget.AppCompat.RatingBar"
-                android:layout_width="299dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
 
